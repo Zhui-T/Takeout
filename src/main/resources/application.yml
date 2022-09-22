@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  #servlet:
+    #context-path: /takeout
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/takeout_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 1234
+  redis:
+    host: 192.168.47.128
+    port: 6379
+    #password:
+    database: 0
+  cache:
+    redis:
+      time-to-live: 3600000 #缓存有效期3600 000 毫秒 一小时
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true  #生成代码时似乎没有，因该只有查询数据库时有用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #雪花算法生成64位数字id
+      id-type: ASSIGN_ID
+
+Takeout:
+  filePath:
+    dishPhotoPath: D:\Takeout\dishPhoto\
